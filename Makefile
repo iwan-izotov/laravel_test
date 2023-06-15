@@ -34,6 +34,10 @@ docker-down-volume: ## Останавливает контейнеры, удал
 console: ## Запускает bash на контейнере php-fpm (для запуска консольных команд)
 	docker exec -it $(PROJECT)_php_fpm bash -c 'cd /var/www/project/ && bash'
 
+.PHONY: npm-build
+npm-build: ## Запускает команду npm run build
+	docker exec -it $(PROJECT)_php_fpm bash -c 'cd /var/www/project/ && npm run build'
+
 .PHONY: console-nginx
 console-nginx: ## Запускает bash на контейнере nginx
 	docker exec -it $(PROJECT)_nginx bash

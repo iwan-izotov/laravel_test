@@ -1,0 +1,9 @@
+.btn-test {
+    font-size: 12px;
+    padding: 4px 15px;
+    line-height: 20px;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: #b64645;
+    border-color: #b64645
+}
