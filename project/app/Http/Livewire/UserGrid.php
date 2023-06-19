@@ -15,6 +15,8 @@ final class UserGrid extends PowerGridComponent
     use ActionButton;
     use WithExport;
 
+    public bool $multiSort = true;
+
     /*
     |--------------------------------------------------------------------------
     |  Features Setup
@@ -25,15 +27,13 @@ final class UserGrid extends PowerGridComponent
     public function setUp(): array
     {
         $this->showCheckBox();
+        $this->persist(['columns', 'filters']);
 
         return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+            Exportable::make('export')->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput(),
-            Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
+            Header::make()->showToggleColumns(),
+            Footer::make()->showPerPage()->showRecordCount(),
         ];
     }
 
